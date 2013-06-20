@@ -23,32 +23,46 @@
 </div>
 
 <script>
-  $('#colorpalette1').colorPalette({target:$('#selected-color1')}).on('selectColor', function(e) {
-    e.target.val(e.color);
-  });
+  $('#colorpalette1').colorPalette({target:$('#selected-color1')})
+          .on('selectColor', function(e) {
+            e.target.val(e.color);
+          });
 </script>
 
 <div class="btn-group">
-  <a id="selected-color2" class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i style="font-weight:bold;">A</i></a>
+  <a id="selected-color2" class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><i>A</i></a>
   <ul class="dropdown-menu">
-    <li><div id="colorpalette2"></div></li>
+    <li style="display:inline-block;">
+      <div>&nbsp;font color</div>
+      <div id="colorpalette2"></div>
+    </li>
+    <li style="display:inline-block;">
+      <div>&nbsp;background color</div>
+      <div id="colorpalette3"></div>
+    </li>
   </ul>
 </div>
 
 <script>
-  $('#colorpalette2').colorPalette({target:$('#selected-color2')}).on('selectColor', function(e) {
-    $('i', e.target).css('color', e.color);
-  });
+  $('#colorpalette2').colorPalette({target:$('#selected-color2')})
+          .on('selectColor', function(e) {
+            $('i', e.target).css('color', e.color);
+          });
+  $('#colorpalette3').colorPalette({target:$('#selected-color2')})
+          .on('selectColor', function(e) {
+            $('i', e.target).css('background-color', e.color);
+          });
 </script>
 
 <div>
   <input id="selected-color3">
-  <div id="colorpalette3"></div>
+  <div id="colorpalette4"></div>
 </div>
 <script>
-  $('#colorpalette3').colorPalette({target:$('#selected-color3')}).on('selectColor', function(e) {
-    e.target.val(e.color);
-  });
+  $('#colorpalette4').colorPalette({target:$('#selected-color3')})
+          .on('selectColor', function(e) {
+            e.target.val(e.color);
+          });
 </script>
 </body>
 </html>
