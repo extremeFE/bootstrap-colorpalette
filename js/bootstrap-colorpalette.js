@@ -18,12 +18,6 @@
   ];
 
   var createPaletteElement = function(element) {
-//    if (!welTarget.parent().hasClass('btn-group')) {
-//      var sDisplay = welTarget.css('display');
-//      var welWrapper = welTarget.wrap('<div class="btn-group" />');
-//      welWrapper.css('display', sDisplay);
-//      welTarget.css('display', 'block');
-//    }
     element.addClass('bootstrap-colorpalette');
     var aHTML = [];
     $.each(aaColor, function(i, aColor){
@@ -38,31 +32,25 @@
       aHTML.push('</div>');
     });
     element.html(aHTML.join(''));
-//    var welPalette = $(aHTML.join('')).prepend (welTarget);
-
-//    welTarget.attr('data-toggle', 'dropdown');
-//    welTarget.addClass('dropdown-toggle');
-//    welTarget.dropdown();
-
-//    return welPalette;
   };
 
-  var EventHandler = function() {
-    this.attach = function(palette) {
-      palette.element.on('click', function(e) {
-        var welTarget = $(e.target);
-        var welBtn = welTarget.closest('.btn-color');
+  var attachEvent = function(palette) {
+    palette.element.on('click', function(e) {
+      var welTarget = $(e.target),
+          welBtn = welTarget.closest('.btn-color');
 
-        if (welBtn[0]) {
-          var value = welBtn.attr('data-value');
-          palette.value = value;
-          palette.element.trigger('selectColor', [palette]);
-        }
+      if (!welBtn[0]) { return; }
+
+      var value = welBtn.attr('data-value');
+      palette.value = value;
+      palette.element.trigger({
+        type: 'selectColor',
+        color: value,
+        element: palette.element,
+        target:palette.target
       });
-    };
+    });
   };
-
-  var eventHandler = new EventHandler();
 
   var Palette = function(element, options) {
     if (options && options.target) {
@@ -70,7 +58,7 @@
     }
     this.element = element;
     createPaletteElement(element);
-    eventHandler.attach(this);
+    attachEvent(this);
   };
 
   $.fn.extend({
