@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <title>A color picker for Twitter Bootstrap</title>
+  <link rel="stylesheet" type="text/css" media="all" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="bootstrap-colorpalette.css" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="bootstrap-colorpalette.js" />
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap.js" charset="utf-8"></script>
+  <script type="text/javascript" src="bootstrap-colorpalette.js" charset="utf-8"></script>
+</head>
+<body>
+<input id="selected-color" style="width:100px;">
+<a id="color1" class="btn btn-mini">Color</a>
+<script>
+  $('#color1').colorPalette({target:$('#selected-color')}).on('changeColor', function(e, data) {
+    data.target.val(data.value);
+  });
+</script>
+
+<a id="color2" class="btn btn-mini"><i style="font-weight:bold;">A</i></a>
+<script>
+  $('#color2').colorPalette().on('changeColor', function(e, data) {
+    $('i', data.element).css('color', data.value);
+  });
+</script>
+</body>
+</html>
