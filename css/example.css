@@ -1,0 +1,7 @@
+input {
+    width: 80px;
+}
+
+.dropdown-menu {
+    min-width: 140px;
+}

@@ -17,15 +17,15 @@
     ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031']
   ];
 
-  var createPaletteElement = function(welTarget) {
-    if (!welTarget.parent().hasClass('btn-group')) {
-      var sDisplay = welTarget.css('display');
-      var welWrapper = welTarget.wrap('<div class="btn-group" />');
-      welWrapper.css('display', sDisplay);
-      welTarget.css('display', 'block');
-    }
-
-    var aHTML = ['<ul class="dropdown-menu bootstrap-colorpalette"><li>'];
+  var createPaletteElement = function(element) {
+//    if (!welTarget.parent().hasClass('btn-group')) {
+//      var sDisplay = welTarget.css('display');
+//      var welWrapper = welTarget.wrap('<div class="btn-group" />');
+//      welWrapper.css('display', sDisplay);
+//      welTarget.css('display', 'block');
+//    }
+    element.addClass('bootstrap-colorpalette');
+    var aHTML = [];
     $.each(aaColor, function(i, aColor){
       aHTML.push('<div>');
       $.each(aColor, function(i, sColor) {
@@ -37,27 +37,26 @@
       });
       aHTML.push('</div>');
     });
-    aHTML.push('</li></ul>');
+    element.html(aHTML.join(''));
+//    var welPalette = $(aHTML.join('')).prepend (welTarget);
 
-    var welPalette = $(aHTML.join('')).insertAfter(welTarget);
+//    welTarget.attr('data-toggle', 'dropdown');
+//    welTarget.addClass('dropdown-toggle');
+//    welTarget.dropdown();
 
-    welTarget.attr('data-toggle', 'dropdown');
-    welTarget.addClass('dropdown-toggle');
-    welTarget.dropdown();
-
-    return welPalette;
+//    return welPalette;
   };
 
   var EventHandler = function() {
     this.attach = function(palette) {
-      palette.palette.on('click', function(e) {
+      palette.element.on('click', function(e) {
         var welTarget = $(e.target);
         var welBtn = welTarget.closest('.btn-color');
 
         if (welBtn[0]) {
           var value = welBtn.attr('data-value');
           palette.value = value;
-          palette.element.trigger('changeColor', [palette]);
+          palette.element.trigger('selectColor', [palette]);
         }
       });
     };
@@ -70,16 +69,15 @@
       this.target = options.target;
     }
     this.element = element;
-    this.palette = createPaletteElement(this.element);
+    createPaletteElement(element);
     eventHandler.attach(this);
   };
 
   $.fn.extend({
     colorPalette : function(options) {
-      var element = this;
-      var data = element.data('colorpalette');
+      var data = this.data('colorpalette');
       if (!data) {
-        element.data('colorpalette', data = new Palette(element, options));
+        this.data('colorpalette', data = new Palette(this, options));
       }
       return this;
     }
