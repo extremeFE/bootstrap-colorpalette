@@ -17,10 +17,10 @@
     ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031']
   ];
 
-  var createPaletteElement = function(element) {
+  var createPaletteElement = function(element, _aaColor) {
     element.addClass('bootstrap-colorpalette');
     var aHTML = [];
-    $.each(aaColor, function(i, aColor){
+    $.each(_aaColor, function(i, aColor){
       aHTML.push('<div>');
       $.each(aColor, function(i, sColor) {
         var sButton = ['<button class="btn-color" style="background-color:', sColor,
@@ -54,7 +54,7 @@
 
   var Palette = function(element, options) {
     this.element = element;
-    createPaletteElement(element);
+    createPaletteElement(element, options && options.colors || aaColor);
     attachEvent(this);
   };
 
