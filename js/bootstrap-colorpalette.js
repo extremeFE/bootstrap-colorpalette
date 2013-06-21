@@ -53,9 +53,6 @@
   };
 
   var Palette = function(element, options) {
-    if (options && options.target) {
-      this.target = options.target;
-    }
     this.element = element;
     createPaletteElement(element);
     attachEvent(this);

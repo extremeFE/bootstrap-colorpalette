@@ -23,9 +23,9 @@
 </div>
 
 <script>
-  $('#colorpalette1').colorPalette({target:$('#selected-color1')})
+  $('#colorpalette1').colorPalette()
           .on('selectColor', function(e) {
-            e.target.val(e.color);
+            $('#selected-color1').val(e.color);
           });
 </script>
 
@@ -44,13 +44,13 @@
 </div>
 
 <script>
-  $('#colorpalette2').colorPalette({target:$('#selected-color2')})
+  $('#colorpalette2').colorPalette()
           .on('selectColor', function(e) {
-            $('i', e.target).css('color', e.color);
+            $('#selected-color2 i').css('color', e.color);
           });
-  $('#colorpalette3').colorPalette({target:$('#selected-color2')})
+  $('#colorpalette3').colorPalette()
           .on('selectColor', function(e) {
-            $('i', e.target).css('background-color', e.color);
+            $('#selected-color2 i').css('background-color', e.color);
           });
 </script>
 
@@ -59,9 +59,9 @@
   <div id="colorpalette4"></div>
 </div>
 <script>
-  $('#colorpalette4').colorPalette({target:$('#selected-color3')})
+  $('#colorpalette4').colorPalette()
           .on('selectColor', function(e) {
-            e.target.val(e.color);
+            $('#selected-color3').val(e.color);
           });
 </script>
 </body>
