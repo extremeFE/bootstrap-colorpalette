@@ -1,5 +1,6 @@
 # bootstrap-colorpalette
 
+#### [Online Demo](http://extremefe.github.io/bootstrap-colorpalette/)
 # Requirements
 
 * [Bootstrap](http://twitter.github.com/bootstrap/) 2.3.2+
