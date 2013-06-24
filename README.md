@@ -1,4 +1,5 @@
 # bootstrap-colorpalette
+Simple color palette for Bootstrap
 
 #### [Online Demo](http://extremefe.github.io/bootstrap-colorpalette/)
 # Requirements
