@@ -32,7 +32,6 @@
       aHTML.push('</div>');
     });
     element.html(aHTML.join(''));
-    element.find('.btn-color').tooltip({container: element, placement: 'bottom'});
   };
 
   var attachEvent = function(palette) {
