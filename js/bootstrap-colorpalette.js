@@ -46,8 +46,7 @@
       palette.element.trigger({
         type: 'selectColor',
         color: value,
-        element: palette.element,
-        target:palette.target
+        element: palette.element
       });
     });
   };
