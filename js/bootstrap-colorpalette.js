@@ -59,10 +59,13 @@
 
   $.fn.extend({
     colorPalette : function(options) {
-      var data = this.data('colorpalette');
-      if (!data) {
-        this.data('colorpalette', data = new Palette(this, options));
-      }
+      this.each(function () {
+        var $this = $(this),
+            data = $this.data('colorpalette');
+        if (!data) {
+          $this.data('colorpalette', new Palette($this, options));
+        }
+      });
       return this;
     }
   });
