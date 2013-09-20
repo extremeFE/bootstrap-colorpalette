@@ -23,7 +23,7 @@
     $.each(_aaColor, function(i, aColor){
       aHTML.push('<div>');
       $.each(aColor, function(i, sColor) {
-        var sButton = ['<button class="btn-color" style="background-color:', sColor,
+        var sButton = ['<button type="button" class="btn-color" style="background-color:', sColor,
           '" data-value="', sColor,
           '" title="', sColor,
           '"></button>'].join('');
