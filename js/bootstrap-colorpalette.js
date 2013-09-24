@@ -36,6 +36,7 @@
 
   var attachEvent = function(palette) {
     palette.element.on('click', function(e) {
+      e.preventDefault();
       var welTarget = $(e.target),
           welBtn = welTarget.closest('.btn-color');
 
